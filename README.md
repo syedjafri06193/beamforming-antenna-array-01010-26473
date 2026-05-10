@@ -1,469 +1,165 @@
-# Beamforming Antenna Array
+# Beamforming Antenna Array Simulator
 
-A software + hardware communication system that uses multiple antennas and controlled phase shifting to steer electromagnetic signals in specific directions without physically moving the antennas.
+A fully interactive browser-based simulator for phased antenna array beamforming — covering electronic beam steering, wave interference visualization, radiation pattern analysis, and real-time phase control.
 
-This project combines:
-- Electromagnetism
-- RF engineering
-- Signal processing
-- Embedded systems
-- FPGA development
-- Wireless communications
-- Computational mathematics
-
-The system manipulates constructive and destructive wave interference to focus radio signals dynamically.
+**[▶ Launch Simulator](./index.html)**
 
 ---
 
-# Project Overview
-
-Beamforming is a foundational technology used in:
-- 5G networks
-- WiFi 6/7 systems
-- radar systems
-- satellite communications
-- military communications
-- autonomous vehicles
-- phased-array antennas
-
-Instead of broadcasting signals equally in all directions, beamforming electronically “steers” signals toward a target direction.
-
-This project focuses on:
-- phased antenna arrays
-- signal steering
-- interference control
-- phase synchronization
-- software-defined radio (SDR) systems
+![Beamforming Antenna Array](https://img.shields.io/badge/Technology-RF%20%2F%20Antenna%20Systems-00d4ff?style=flat-square) ![Language](https://img.shields.io/badge/Built%20With-HTML%20%2F%20JS%20%2F%20Canvas-ff6b35?style=flat-square) ![License](https://img.shields.io/badge/License-MIT-00ff88?style=flat-square)
 
 ---
 
-# Key Features
+## What This Project Does
 
-- Multi-antenna phased array
-- Electronic beam steering
-- Dynamic phase shifting
-- Real-time signal processing
-- SDR or FPGA implementation
-- Directional signal transmission
-- Interference visualization
-- Radiation pattern analysis
+Beamforming is the technology that enables 5G networks, phased-array radar, satellite communications, and WiFi 6/7 to focus electromagnetic energy in specific directions without physically moving an antenna. This simulator lets you explore and visualise that technology in real time inside your browser — no installation, no hardware required.
 
 ---
 
-# Core Physics Concept
+## Live Simulator Features
 
-## Wave Interference
+### Three Visualisation Modes
 
-Beamforming works through constructive and destructive interference.
-
-When waves combine:
-- in-phase signals reinforce each other
-- out-of-phase signals cancel each other
-
-Constructive interference increases signal strength in desired directions.
-
----
-
-# Electromagnetic Wave Model
-
-An electromagnetic wave can be represented as:
-
-```math
-E(x,t)=A\cos(kx-\omega t+\phi)
-```
-
-Where:
-- \(A\) = amplitude
-- \(k\) = wave number
-- \(\omega\) = angular frequency
-- \(\phi\) = phase shift
-
-Beam steering is achieved by controlling the phase term \(\phi\) for each antenna element.
-
----
-
-# Array Factor Equation
-
-The antenna array response depends on the array factor.
-
-```math
-AF(\theta)=\sum_{n=0}^{N-1} e^{j(nkd\sin\theta+\phi_n)}
-```
-
-Where:
-- \(N\) = number of antennas
-- \(d\) = antenna spacing
-- \(\theta\) = observation angle
-- \(\phi_n\) = phase offset
-
-This equation determines the directional radiation pattern.
-
----
-
-# Beam Steering Principle
-
-Changing phase offsets changes beam direction.
-
-```math
-\Delta \phi = \frac{2\pi d \sin\theta}{\lambda}
-```
-
-Where:
-- \(\Delta \phi\) = phase difference
-- \(d\) = antenna spacing
-- \(\theta\) = steering angle
-- \(\lambda\) = wavelength
-
-This is the core of electronic beam steering.
-
----
-
-# System Architecture
-
-```text
-                 +----------------------+
-                 | Signal Generator     |
-                 +----------+-----------+
-                            |
-                            v
-                 +----------------------+
-                 | FPGA / SDR Processor |
-                 +----------+-----------+
-                            |
-         +------------------+------------------+
-         |                  |                  |
-         v                  v                  v
-   +-----------+     +-----------+     +-----------+
-   | Phase     |     | Phase     |     | Phase     |
-   | Shifter 1 |     | Shifter 2 |     | Shifter N |
-   +-----+-----+     +-----+-----+     +-----+-----+
-         |                 |                 |
-         v                 v                 v
-   +-----------+     +-----------+     +-----------+
-   | Antenna 1 |     | Antenna 2 | ... | Antenna N |
-   +-----------+     +-----------+     +-----------+
-```
-
----
-
-# Hardware Components
-
-## RF System
-
-- Antenna array
-- RF amplifiers
-- Phase shifters
-- RF mixers
-- Frequency synthesizer
-
----
-
-# Embedded / Processing Hardware
-
-Possible platforms:
-- FPGA boards
-- SDR platforms
-- STM32
-- ESP32 (basic control)
-- Raspberry Pi (visualization)
-
----
-
-# SDR Platforms
-
-Possible SDR implementations:
-- HackRF
-- PlutoSDR
-- RTL-SDR
-- USRP systems
-
----
-
-# FPGA Options
-
-Advanced implementations may use:
-- Xilinx FPGA
-- Intel FPGA
-- Zynq SoC platforms
-
-FPGAs are ideal because beamforming requires:
-- parallel signal processing
-- low latency
-- high-speed DSP operations
-
----
-
-# Software Components
-
-## Beamforming Engine
-
-Responsibilities:
-1. Generate RF signals
-2. Calculate phase offsets
-3. Apply phase shifts
-4. Control antenna outputs
-5. Analyze received signals
-6. Visualize radiation patterns
-
----
-
-# Signal Processing Concepts
-
-This project introduces:
-- digital signal processing
-- Fourier analysis
-- phase synchronization
-- RF modulation
-- spectral analysis
-- adaptive filtering
-
----
-
-# Radiation Pattern Visualization
-
-Possible visualization systems:
-- polar radiation plots
-- real-time beam steering animation
-- interference maps
-- signal heatmaps
-- directional gain plots
-
----
-
-# Beamforming Algorithms
-
-## Fixed Beamforming
-Static steering angles.
-
-## Adaptive Beamforming
-Automatically adjusts based on signal conditions.
-
-## Delay-and-Sum Beamforming
-
-```math
-y(t)=\sum_{n=1}^{N}x_n(t-\tau_n)
-```
-
-Where:
-- \(x_n(t)\) = signal from antenna \(n\)
-- \(\tau_n\) = delay offset
-
-This aligns wavefronts constructively.
-
----
-
-# Advanced Algorithms
-
-Possible advanced implementations:
-- MVDR beamforming
-- MUSIC algorithm
-- adaptive null steering
-- MIMO beamforming
-- AI-assisted optimization
-
----
-
-# Engineering Concepts Covered
-
-## Physics
-- electromagnetic waves
-- interference
-- wave propagation
-- RF radiation
-- antenna theory
-
-## Mathematics
-- Fourier transforms
-- complex numbers
-- vector analysis
-- phase relationships
-- signal decomposition
-
-## Computer Engineering
-- FPGA programming
-- SDR systems
-- real-time DSP
-- embedded systems
-- high-speed processing
-
-## Electrical Engineering
-- RF electronics
-- antenna arrays
-- impedance matching
-- analog front-end design
-
----
-
-# Example Applications
-
-## Telecommunications
-- 5G beam steering
-- WiFi optimization
-- satellite communications
-
-## Aerospace & Defense
-- radar systems
-- phased-array tracking
-- target localization
-
-## Robotics & Autonomous Systems
-- object detection
-- navigation systems
-- sensor localization
-
----
-
-# Advanced Extensions
-
-## Intermediate
-- real-time beam visualization
-- wireless control dashboard
-- adaptive phase tuning
-- multi-frequency support
-
-## Advanced
-- MIMO communication systems
-- AI-assisted beam optimization
-- adaptive null steering
-- multi-user beamforming
-- FPGA DSP acceleration
-
----
-
-# Challenges
-
-This project is difficult because:
-- RF systems are highly sensitive
-- synchronization errors affect beam quality
-- phase accuracy is critical
-- signal noise complicates processing
-- antenna spacing matters significantly
-
-This project becomes extremely advanced when implemented with FPGA or SDR hardware.
-
----
-
-# Suggested Tech Stack
-
-| Area | Technologies |
+| Mode | Description |
 |---|---|
-| Embedded Systems | STM32, ESP32 |
-| FPGA | Xilinx Vivado, Intel Quartus |
-| SDR | GNU Radio, HackRF, PlutoSDR |
-| Programming | C++, Python |
-| Visualization | MATLAB, Python |
-| Simulation | CST Studio, HFSS |
+| **Radiation Pattern** | Real-time polar plot of the array factor in dB scale with glow overlay, beam direction arrow, and null steering indicator |
+| **Wave Interference** | Pixel-accurate constructive/destructive interference field computed from all N antenna sources |
+| **Array View** | Physical diagram of the linear array showing dipole elements, phase-shifter boxes, transmission line, and beam direction |
+
+### Interactive Controls
+
+- **Number of antennas** — 2 to 16 elements
+- **Element spacing** — 0.1λ to 1.5λ
+- **Operating frequency** — 1 GHz to 60 GHz (covers sub-6 GHz through mmWave)
+- **Beam steering angle** — −90° to +90°
+- **Hamming window taper** — variable, reduces side-lobe level
+- **Per-element phase sliders** — manual control of each antenna's phase offset
+- **Auto Scan mode** — continuously sweeps the beam from −60° to +60°
+- **Phase reset** — returns all elements to 0°
+
+### Live Metrics
+
+- Main lobe gain (dB)
+- 3 dB beamwidth (degrees)
+- Side lobe level (dB)
+- Current steering angle
 
 ---
 
-# Repository Structure
+## Core Physics
 
-```text
+### Electromagnetic Wave Model
+
+An electromagnetic wave is represented as:
+
+```
+E(x,t) = A · cos(kx − ωt + φ)
+```
+
+Where `A` is amplitude, `k` is wavenumber, `ω` is angular frequency, and `φ` is phase.
+
+### Array Factor
+
+The directional response of the phased array is given by:
+
+```
+AF(θ) = Σ(n=0 to N-1) e^{ j(n·k·d·sinθ + φₙ) }
+```
+
+Where `N` is element count, `d` is spacing, `θ` is observation angle, `φₙ` is the phase offset of element n.
+
+### Beam Steering
+
+The progressive phase shift required to steer to angle θ:
+
+```
+Δφ = 2π · d · sin(θ) / λ
+```
+
+### Delay-and-Sum Beamforming
+
+```
+y(t) = Σ xₙ(t − τₙ)
+```
+
+Aligns wavefronts constructively in the target direction.
+
+---
+
+## Repository Structure
+
+```
 beamforming-antenna-array/
 │
-├── firmware/
-│   ├── phase_control.cpp
-│   ├── antenna_manager.cpp
-│   ├── dsp_pipeline.cpp
-│   └── main.cpp
-│
-├── fpga/
-│   ├── phase_shifter/
-│   ├── dsp_blocks/
-│   └── beamforming_core/
-│
-├── sdr/
-│   ├── gnuradio/
-│   ├── modulation/
-│   └── signal_capture/
-│
-├── simulations/
-│   ├── antenna_patterns/
-│   ├── interference_models/
-│   └── beam_steering/
-│
-├── visualization/
-│   ├── radiation_plots/
-│   ├── realtime_dashboard/
-│   └── heatmaps/
+├── index.html                  ← Interactive browser simulator (main deliverable)
 │
 ├── docs/
-│   ├── antenna_theory.md
-│   ├── beamforming.md
-│   ├── phase_control.md
-│   └── rf_design.md
+│   ├── antenna_theory.md       ← Antenna fundamentals and radiation theory
+│   ├── beamforming.md          ← Beamforming algorithms and mathematics
+│   └── phase_control.md        ← Phase shifting and steering implementation
 │
-├── images/
-├── videos/
-└── README.md
+├── visualization/
+│   └── README.md               ← Notes on radiation pattern and heatmap rendering
+│
+├── simulations/
+│   └── README.md               ← Simulation methodology and parameter reference
+│
+├── firmware/
+│   └── README.md               ← Hardware implementation notes (STM32 / ESP32)
+│
+└── sdr/
+    └── README.md               ← SDR platform notes (HackRF, PlutoSDR, RTL-SDR)
 ```
 
 ---
 
-# Learning Outcomes
+## How to Run
 
-By building this project, you will gain experience with:
-- RF communication systems
-- phased-array antennas
-- FPGA development
-- software-defined radio
-- signal processing
-- beam steering algorithms
-- electromagnetic wave analysis
+Open `index.html` in any modern browser — Chrome, Firefox, Edge, or Safari. No server, build step, or installation required.
+
+To host it live via GitHub Pages:
+1. Go to **Settings → Pages**
+2. Set source to **main branch / root**
+3. The simulator will be live at `https://<your-username>.github.io/<repo-name>/`
 
 ---
 
-# Why This Project Stands Out
+## Technologies Covered
 
-This project resembles technologies used in:
-- 5G infrastructure
-- military radar systems
-- aerospace communications
-- satellite networks
-- autonomous sensing systems
-
-It demonstrates:
-- advanced RF engineering
-- strong mathematical understanding
-- DSP knowledge
-- FPGA/SDR experience
-- interdisciplinary systems engineering
-
-This is far beyond a typical electronics or embedded systems project.
+| Domain | Topics |
+|---|---|
+| Physics | Electromagnetic waves, wave interference, RF radiation, antenna theory |
+| Mathematics | Fourier analysis, complex exponentials, phase relationships, vector analysis |
+| Signal Processing | Array factor, beamforming algorithms, Hamming window tapering, spectral analysis |
+| RF Engineering | Phased arrays, phase shifters, impedance matching, antenna spacing |
+| Embedded Systems | STM32, ESP32, FPGA platforms (Xilinx, Intel Zynq) |
+| SDR | GNU Radio, HackRF, PlutoSDR, RTL-SDR, USRP |
 
 ---
 
-# Future Research Directions
+## Applications
 
-- adaptive beamforming
-- MIMO communication
-- intelligent RF systems
-- AI-enhanced signal optimization
-- mmWave communication
-- distributed antenna systems
-
----
-
-# License
-
-MIT License
+- **5G / mmWave** — massive MIMO base stations, user equipment beam tracking
+- **Radar** — phased-array surveillance, target localisation, automotive radar
+- **Satellite** — low-earth orbit satellite steering, ground station arrays
+- **WiFi 6/7** — multi-user beamforming, spatial reuse
+- **Defence** — electronic warfare, jamming, adaptive null steering
+- **Autonomous vehicles** — sensor fusion, radar sensing
 
 ---
 
-# Final Note
+## Future Extensions
 
-Beamforming antenna systems sit at the intersection of:
-- electromagnetism
-- wireless communications
-- signal processing
-- FPGA engineering
-- computational mathematics
+- [ ] Adaptive beamforming (MVDR / LCMV)
+- [ ] MUSIC direction-of-arrival algorithm
+- [ ] 2D planar array support
+- [ ] MIMO channel simulation
+- [ ] AI-assisted beam optimisation
+- [ ] SDR hardware integration (GNU Radio export)
+- [ ] Multi-user interference nulling
 
-This project exposes you to technologies used in:
-- modern telecommunications
-- radar systems
-- autonomous systems
-- satellite communications
-- next-generation wireless infrastructure
+---
 
-A polished implementation can become an extremely impressive research or portfolio project.
+## License
+
+MIT License — free to use, modify, and distribute.
